@@ -21,3 +21,12 @@ kendalltau_rho,kendalltau_pValue=kendalltau(luminosity,red_shift)
 print('Spearman---| correlation=',spearman_rho,'p value=',spearman_pValue)
 print('Pearson---| correlation=',pearson_rho,'p value=',pearson_pValue)
 print('Kendall-tau---|  correlation=',kendalltau_rho,'p value=',kendalltau_pValue)
+
+'''
+complexity
+spearman : O(nlog(n)) as we need to do the sorting
+pearson :  O(n) no sorting one loop can do the work 
+kendal-tau : O(nlog(n)) or O(n**2)
+According to time complexity Pearson is fastest. 
+Kendall-tau reaches the normality fastest of all of them .
+'''

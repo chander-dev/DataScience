@@ -20,11 +20,10 @@ for i in range(len(Samples_Drawn)):
 # plot the expected gaussian pdf
     sigma = np.sqrt(2.0*DOF/Samples_Drawn[i])
     dist = norm(DOF, sigma)
-    x_pdf = np.linspace(norm.ppf(10e-7,DOF,sigma),norm.ppf((10e5-1)*10e-7,DOF,sigma), 1000)
+    x_pdf = np.linspace(norm.ppf(10e-5,DOF,sigma),norm.ppf((10e2-1)*10e-4,DOF,sigma), 1000)
     plt.plot(x_pdf, dist.pdf(x_pdf), '--r')
 
     plt.title("$Samples = %i$" % Samples_Drawn[i])#, ha='right', va='top')
     plt.xlabel('x')
     plt.ylabel('p(x)')
-
 plt.show()

@@ -1,7 +1,8 @@
 '''As cauchy distribution does not have a finite variance, it does not follow the central limit theorem 
 this program takes the mean of the samples drawn from a cauchy distribution with 1, 5 and 10 at a time. 
 we can clearly see from the graph that the results does not look like a gaussian, hence it does not follow 
-central limit theorem'''
+central limit theorem.
+For the distribution to obey cental limit therom it should have finite mean and variance.'''
 
 
 import numpy as np
@@ -22,7 +23,7 @@ for i in range(len(Samples_Drawn)):
     sample_mean = x[:Samples_Drawn[i], :].mean(0)
     plt.hist(sample_mean,bins=50,normed=True)
 
-    plt.title("$Samples = %i$" % Samples_Drawn[i])#, ha='right', va='top')
+    plt.title("$Samples = %i$" % Samples_Drawn[i])
     plt.xlabel('x')
     plt.ylabel('p(x)')
 
