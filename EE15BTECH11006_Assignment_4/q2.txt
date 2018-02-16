@@ -1,0 +1,12 @@
+please find the paper on Fast and Robust Spectrum Sensing via Kolmogorov-Smirnov Test 
+
+Spectrum sensing is the process of periodically monitoring a specific frequency band, aiming to identify presence or absence of primary users.
+
+In this paper authors proposed an idea to use of a sequence of noise-only samples to form the null hypothesis distribution 𝐹0. Then performs the two-sample K-S test to accept or reject the null hypothesis test based on the received signal samples.
+But the recieved signal in is complex so thet have to consider a 2D KS test 
+
+->The K-S-based spectrum sensing then involves the following steps.
+∙ The cognitive user obtains the noise statistics by collecting 𝑀0 noise-only sample vectors and the corresponding amplitude or quadrature statistics. It computes the empirical 1D or 2D noise cdf 𝐹0.
+∙ Spectrum sensing: The cognitive user collects 𝑀 received signal vectors and form the corresponding amplitude or quadrature statistics. It computes the empirical 1D or 2D cdf 𝐹1. It then computes the maximum difference D then based on that declare the primary users’ presence; otherwise no primary user is present.
+
+But according to https://asaip.psu.edu/Articles/beware-the-kolmogorov-smirnov-test KS test should not be applied to the data with more than 1 Dimension, which is done in this paper. 
