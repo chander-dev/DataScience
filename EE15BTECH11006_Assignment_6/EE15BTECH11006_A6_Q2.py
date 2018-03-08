@@ -15,10 +15,8 @@ def compute_sigma_level(trace1, trace2, nbins=20):
     L, xbins, ybins = np.histogram2d(trace1, trace2, nbins)
     L[L == 0] = 1E-16
     logL = np.log(L)
-
     shape = L.shape
     L = L.ravel()
-
     # obtain the indices to sort and unsort the flattened array
     i_sort = np.argsort(L)[::-1]
     i_unsort = np.argsort(i_sort)
@@ -67,22 +65,19 @@ def plot_MCMC_results(xdata, ydata, trace, colors='k'):
 
 
 def log_prior(theta):
-    alpha, beta, sigma = theta
-    if sigma < 0:
-        return -np.inf  # log(0)
-    else:
-        return -1.5 * np.log(1 + beta ** 2) - np.log(sigma)
+    alpha, beta = theta
+    return -1.5 * np.log(1 + beta ** 2) 
 
 def log_likelihood(theta, x, y):
-    alpha, beta, sigma = theta
+    alpha, beta = theta
     y_model = alpha + beta * x
-    return -0.5 * np.sum(np.log(2 * np.pi * sigma ** 2) + (y - y_model) ** 2 / sigma ** 2)
+    return -0.5 * np.sum(np.log(2 * np.pi * e ** 2) + (y - y_model) ** 2 / e ** 2)
 
 def log_posterior(theta, x, y):
     return log_prior(theta) + log_likelihood(theta, x, y)
 
 
-ndim = 3  # number of parameters in the model
+ndim = 2  # number of parameters in the model
 nwalkers = 50  # number of MCMC walkers
 nburn = 1000  # "burn-in" period to let chains stabilize
 nsteps = 2000  # number of MCMC steps to take
